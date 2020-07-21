@@ -1,8 +1,3 @@
-# coding: utf-8
-# @Project_Name :   LibraTest
-# @File         :   update_start.py
-# @Author       :   'yangcai'
-# @Time         :   2020/4/3 16:10
 import os
 
 
