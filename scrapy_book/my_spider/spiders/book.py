@@ -1,6 +1,6 @@
 import scrapy
 
-from my_spider.items import MySpiderItem
+from scrapy_book.my_spider.items import MySpiderItem
 
 
 class BookSpider(scrapy.Spider):
@@ -12,10 +12,12 @@ class BookSpider(scrapy.Spider):
     # 爬虫作用范围
     allowed_domains = ["tencent.com"]
 
-    url = "http://hr.tencent.com/position.php?&start="
+    url = "https://read.douban.com/charts?"
     offset = 0
+    url_value = 'type={0}&index=featured&dcs=charts&dcm=charts-nav'.format(offset)
     # 起始url
-    start_urls = [url + str(offset)]
+    # start_urls = [url + url_value]
+    start_urls = 'https://read.douban.com/charts?dcs=charts&dcm=charts-nav'
 
     def parse(self, response):
         for each in response.xpath("//tr[@class='even'] | //tr[@class='odd']"):
@@ -37,7 +39,7 @@ class BookSpider(scrapy.Spider):
             yield item
 
         if self.offset < 1680:
-            self.offset += 10
+            self.offset += 1
 
         # 每次处理完一页的数据之后，重新发送下一页页面请求
         # self.offset自增10，同时拼接为新的url，并调用回调函数self.parse处理Response
