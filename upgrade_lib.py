@@ -22,7 +22,7 @@ def upgrade_lib(upgrade_list):
 
 
 if __name__ == '__main__':
-    library_install_list = ['scrapy', 'wheel', 'Twisted']
+    library_install_list = ['scrapy', 'requests', 'lxml', 'bs4', 'ffmpy3']
     library_upgrade_list = []
     install_lib(library_install_list)
     upgrade_lib(library_upgrade_list)
